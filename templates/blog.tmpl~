@@ -1,0 +1,3 @@
+{{define "content"}}
+Blog Page
+{{end}}

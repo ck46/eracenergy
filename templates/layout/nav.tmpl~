@@ -1,0 +1,23 @@
+{{define "nav"}}
+<nav>
+    <div class="w3-bar w3-border w3-light-grey">
+	<a href="/" class="w3-padding">
+	    <img src="/assets/images/eracenergylogo.jpg" height="56px" alt="ERAC">
+	</a>
+	<span class="w3-right">
+	<a href="/" class="w3-bar-item w3-button w3-border-right w3-border-left">Home</a>
+	<a href="/about" class="w3-bar-item w3-button w3-border-right">About Us</a>
+	<div class="w3-dropdown-hover">
+	    <button class="w3-button w3-border-right">Our Solutions</button>
+	    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+		<a href="/solutions#" class="w3-bar-item w3-button">Link 1</a>
+		<a href="/solutions#" class="w3-bar-item w3-button">Link 2</a>
+		<a href="/solutions#" class="w3-bar-item w3-button">Link 3</a>
+	    </div>
+	</div>
+	<a href="/blog" class="w3-bar-item w3-button w3-border-right">Blog</a>
+	<a href="/contact" class="w3-bar-item w3-button w3-border-right">Contact Us</a>
+	</span>
+    </div>
+</nav>
+{{end}}

@@ -1,0 +1,53 @@
+{{define "content"}}
+<main class="w3-container">
+    <section class="w3-content">
+	<h2 class="w3-center section-header">Get In Touch</h2>
+	<p class="w3-padding-large"><b>Main Office - Lusaka</b>
+	    Plot No. 140, 2nd Street,<br />
+	    Mwambula Road, Jesomndine,<br />
+	    Lusaka, ZAMBIA<br />
+	    Tel: +260 97 8321973<br />
+	    Tel: +260 97 6684689<br />
+	    Email: <a href="mailto:eracenergyltd@gmail.com">eracenergyltd@gmail.com</a></p>
+    </section>
+    <section class="w3-content">
+	<h2 class="w3-center section-header w3-padding">Complete this form to send us an email. And we will respond to you via email.</h2>
+	<form class="w3-container" action="/contact" method="post">
+	    <div class="w3-row">
+		<div class="w3-col s12 m6 w3-padding">
+		    <input class="w3-input w3-border" name="fname" placeholder="First Name" type="text">
+		</div>
+		<div class="w3-col s12 m6 w3-padding">
+		    <input class="w3-input w3-border" name="lname" placeholder="Last Name" type="text">
+		</div>
+	    </div>
+	    <div class="w3-row">
+		<div class="w3-col s12 m6 w3-padding">
+		    <input class="w3-input w3-border" name="email" placeholder="Email" type="email">
+		</div>
+		<div class="w3-col s12 m6 w3-padding">
+		    <input class="w3-input w3-border" name="phone" placeholder="Phone" type="text">
+		</div>
+	    </div>
+	    <div class="w3-row">
+		<div class="w3-col s12 w3-padding">
+		    <input class="w3-input w3-border" name="country" placeholder="Country" type="text">
+		</div>
+	    </div>
+	    <div class="w3-row">
+		<div class="w3-col s12 w3-padding">
+		    <input class="w3-input w3-border" name="subject" placeholder="What are you contacting us about" type="text">
+		</div>
+	    </div>
+	    <div class="w3-row">
+		<div class="w3-col s12 w3-padding">
+		    <textarea class="w3-input w3-border" name="message" rows="4">What is your specific question or issue?</textarea>
+		</div>
+	    </div>
+	    <div class="w3-row">
+		<div class="w3-col s12 w3-padding">
+		    <button class="w3-button w3-round-large w3-blue" type="submit">SUBMIT</button>
+		</div>
+	</form>
+    </section>
+    {{end}}

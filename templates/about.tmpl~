@@ -1,0 +1,3 @@
+{{define "content"}}
+About Us Page
+{{end}}

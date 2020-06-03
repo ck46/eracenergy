@@ -1,0 +1,222 @@
+package utils
+
+import (
+	"encoding/base64"
+	"encoding/json"
+	"fmt"
+	"go/build"
+	"html/template"
+	"log"
+	"math/rand"
+	"net/http"
+	"os"
+	"path/filepath"
+	"time"
+
+	"github.com/gorilla/securecookie"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
+	uuid "github.com/satori/go.uuid"
+)
+
+// function for loading configuration file
+func LoadConfig(filename string) (Config, error) {
+	var config Config
+	configFile, err := os.Open(AppFilePath(filename))
+	defer configFile.Close()
+
+	if err != nil {
+		return config, err
+	}
+
+	jsonParser := json.NewDecoder(configFile)
+	err = jsonParser.Decode(&config)
+
+	if err != nil {
+		fmt.Println("decoding error")
+	}
+
+	return config, err
+}
+
+func PanicOnError(err error) {
+	if err != nil {
+		log.Fatal(err)
+		panic(err)
+	}
+}
+
+// rendering templates
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
+func AppFilePath(fpath string) string {
+	gopath := os.Getenv("GOPATH")
+	if gopath == "" {
+		gopath = build.Default.GOPATH
+	}
+	return filepath.Join(gopath, "src/eduman/"+fpath)
+}
+
+func GenericTemplate(w http.ResponseWriter, r *http.Request, tmpl string, args interface{}, theme string) {
+	basePath := AppFilePath(fmt.Sprintf("templates/%s/base.tmpl", theme))
+	navPath := AppFilePath(fmt.Sprintf("templates/%s/nav.tmpl", theme))
+	footerPath := AppFilePath(fmt.Sprintf("templates/%s/footer.tmpl", theme))
+	layout := template.Must(template.ParseFiles(basePath, navPath, footerPath))
+
+	tpl, err1 := layout.ParseFiles(AppFilePath(tmpl))
+	if err1 != nil {
+		panic(err1)
+	}
+
+	// テンプレートを出力
+	enableCors(&w)
+	err2 := tpl.ExecuteTemplate(w, "base", args)
+	if err2 != nil {
+		panic(err2)
+	}
+}
+
+func TemplateHandler(w http.ResponseWriter, r *http.Request, tmpl string, args interface{}) {
+	// fmt.Println(time.Now().Format("2006/01/02 15:04:05") + " " + r.URL.Path)
+	// テンプレート用のファイルを読み込む
+	basePath := AppFilePath("templates/layout/base.tmpl")
+	navPath := AppFilePath("templates/layout/nav.tmpl")
+	footerPath := AppFilePath("templates/layout/footer.tmpl")
+	layout := template.Must(template.ParseFiles(basePath, navPath, footerPath))
+
+	tpl, err1 := layout.ParseFiles(AppFilePath(tmpl))
+	if err1 != nil {
+		panic(err1)
+	}
+
+	// テンプレートを出力
+	enableCors(&w)
+	err2 := tpl.ExecuteTemplate(w, "base", args)
+	if err2 != nil {
+		panic(err2)
+	}
+}
+
+func DashboardTemplate(w http.ResponseWriter, r *http.Request, tmpl string, args interface{}) {
+	basePath := AppFilePath("templates/master/base.tmpl")
+	navPath := AppFilePath("templates/master/nav.tmpl")
+	footerPath := AppFilePath("templates/master/footer.tmpl")
+	layout := template.Must(template.ParseFiles(basePath, navPath, footerPath))
+
+	tpl, err1 := layout.ParseFiles(AppFilePath(tmpl))
+	if err1 != nil {
+		panic(err1)
+	}
+
+	// テンプレートを出力
+	enableCors(&w)
+	err2 := tpl.ExecuteTemplate(w, "base", args)
+	if err2 != nil {
+		panic(err2)
+	}
+}
+
+func SinglePageTemplate(w http.ResponseWriter, tmpl string, args interface{}) {
+	tpl, err1 := template.ParseFiles(AppFilePath(tmpl))
+	if err1 != nil {
+		panic(err1)
+	}
+
+	err2 := tpl.ExecuteTemplate(w, "page", args)
+	if err2 != nil {
+		panic(err2)
+	}
+}
+
+// Session handling
+var cookie_handler = securecookie.New(
+	securecookie.GenerateRandomKey(64),
+	securecookie.GenerateRandomKey(32))
+
+func GetUserID(request *http.Request) (string, error) {
+	userid := ""
+	if cookie, err := request.Cookie("session"); err == nil {
+		cookieValue := make(map[string]string)
+		err = cookie_handler.Decode("session", cookie.Value, &cookieValue)
+		userid = cookieValue["uid"]
+		if err != nil {
+			return userid, fmt.Errorf("No user session stored in cookie!")
+		}
+	} else {
+		return userid, fmt.Errorf("No user session stored in cookie!")
+	}
+	// fmt.Println(userid)
+	return userid, nil
+}
+
+func SetSession(userid string, response http.ResponseWriter) {
+	value := map[string]string{
+		"uid": userid,
+	}
+	if encoded, err := cookie_handler.Encode("session", value); err == nil {
+		cookie := &http.Cookie{
+			Name:  "session",
+			Value: encoded,
+			Path:  "/",
+		}
+		http.SetCookie(response, cookie)
+	}
+}
+
+func ClearSession(response http.ResponseWriter) {
+	cookie := &http.Cookie{
+		Name:   "session",
+		Value:  "",
+		Path:   "/",
+		MaxAge: -1,
+	}
+	http.SetCookie(response, cookie)
+}
+
+func DBCon(config Config) (*gorm.DB, error) {
+	// fmt.Println(config)
+	db_config := fmt.Sprintf(`host=%s user=%s password=%s dbname=%s 
+			sslmode=disable`,
+		config.Dbcon.Host,
+		config.Dbcon.User,
+		config.Dbcon.Password,
+		config.Dbcon.DbName)
+	db, err := gorm.Open("postgres", db_config)
+	return db, err
+}
+
+// random generators
+
+var DefaultGenerator = func() string {
+	id := uuid.NewV4()
+	return id.String()
+}
+
+// Generate a random string of A-Z chars with len = l
+func RandomString(l int) string {
+	var pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+	rand.Seed(time.Now().UnixNano())
+	bytes := make([]byte, l)
+	for i := 0; i < l; i++ {
+		bytes[i] = pool[rand.Intn(len(pool))]
+	}
+	return string(bytes)
+}
+
+func GenerateRandomBytes(n int) ([]byte, error) {
+	b := make([]byte, n)
+	_, err := rand.Read(b)
+	// Note that err == nil only if we read len(b) bytes.
+	if err != nil {
+		return nil, err
+	}
+
+	return b, nil
+}
+
+func GenerateRandomString(s int) (string, error) {
+	b, err := GenerateRandomBytes(s)
+	return base64.URLEncoding.EncodeToString(b), err
+}

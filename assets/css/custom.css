@@ -1,0 +1,36 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+    height: 100%;
+    margin: 0;
+    line-height: 1.8;
+    // background-color: #2f2a42;    
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.w3-bar .w3-button {
+    padding: 16px;
+}
+a {text-decoration:none}
+/*.nav {
+    /* overflow: hidden;/
+    background-color: white;
+    position: fixed; /* Set the navbar to fixed position /
+    top: 0; /* Position the navbar at the top of the page /
+    width: 100%; /* Full width /
+    z-index: 1;
+    height: 65px;
+}*/
+.main-content {
+    margin-top: 65px;
+}
+#footer-links a:hover {text-decoration: underline;
+        text-decoration-color: inherit}
+
+
+.section-header {
+    background-color:#2e74b5;
+    color: white;
+}
