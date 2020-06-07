@@ -1,5 +1,15 @@
 {{define "content"}}
 <main class="w3-container">
+    <section class="w3-content w3-center">
+	<div class="w3-padding-large w3-display-container">
+	    <img class="mySlides w3-center" src="/assets/images/solar-kits.png" style="width:100%">
+	    <img class="mySlides" src="/assets/images/solar-pumpset.png" style="width:100%">
+	    <img class="mySlides" src="/assets/images/solar-geysers.png" style="width:100%">
+
+	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	</div>
+    </section>
     <section class="w3-content" id="off-grid">
 	<h2 class="w3-center section-header">Off-grid Solar PV Systems</h2>
 	<p>We offer custom-designed off-grid solar systems to individuals, schools, clinics, offices, and small and medium enterprises that have no access to the national grid.<br />
@@ -117,4 +127,24 @@
 	<p>We offer fee-based technical and consultancy services on solar energy systems. Our expert team is at hand to advise clients on the best system that meets their energy needs. To us, customer care service is our number one priority to build enduring relationships with our clients and foster the growth of the solar industry.</p>
     </section>
 </main>
+<script>
+ w3.slideshow(".mySlides", 4000)
+ var slideIndex = 1;
+ showDivs(slideIndex);
+
+ function plusDivs(n) {
+     showDivs(slideIndex += n);
+ }
+
+ function showDivs(n) {
+     var i;
+     var x = document.getElementsByClassName("mySlides");
+     if (n > x.length) {slideIndex = 1}
+     if (n < 1) {slideIndex = x.length}
+     for (i = 0; i < x.length; i++) {
+	 x[i].style.display = "none";  
+     }
+     x[slideIndex-1].style.display = "block";  
+ }
+</script>
 {{end}}

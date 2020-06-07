@@ -1,5 +1,15 @@
 {{define "content"}}
 <main class="w3-container">
+    <section class="w3-content w3-center">
+	<div class="w3-padding-large w3-display-container">
+	    <img class="mySlides w3-center" src="/assets/images/solar-kits.png" style="width:100%">
+	    <img class="mySlides" src="/assets/images/solar-pumpset.png" style="width:100%">
+	    <img class="mySlides" src="/assets/images/solar-geysers.png" style="width:100%">
+
+	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	</div>
+    </section>
     <section class="w3-content">
 	<h2 class="w3-center section-header">WHO WE ARE</h2>
 	<p>ERAC ENERGY LIMITED is a Zambian registered energy company with offices in Lusaka, and provides innovative solar energy systems to commercial and residential customers.</p>
@@ -50,4 +60,24 @@
 	</div>
     </section>
 </main>
+<script>
+ w3.slideshow(".mySlides", 4000)
+ var slideIndex = 1;
+ showDivs(slideIndex);
+
+ function plusDivs(n) {
+     showDivs(slideIndex += n);
+ }
+
+ function showDivs(n) {
+     var i;
+     var x = document.getElementsByClassName("mySlides");
+     if (n > x.length) {slideIndex = 1}
+     if (n < 1) {slideIndex = x.length}
+     for (i = 0; i < x.length; i++) {
+	 x[i].style.display = "none";  
+     }
+     x[slideIndex-1].style.display = "block";  
+ }
+</script>
 {{end}}
