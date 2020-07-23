@@ -31,6 +31,20 @@ a {text-decoration:none}
 
 
 .section-header {
-    background-color:#2e74b5;
-    color: white;
+    //background-color:#2e74b5;
+    color: #2e74b5;
+}
+.theme-color{ color: #2e74b5; }
+
+.home-header {
+    background-image: url("/assets/images/solar-panels-for-inverter-and-pump.jpeg");
+}
+
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    //background-image: url("/assets/images/solar-panels-for-inverter-and-pump.jpeg");
+    background-image: url("/assets/images/solar-panels.jpeg");
+    // opacity: 0.5;
+    min-height: 75%;
 }
