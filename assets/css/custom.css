@@ -48,3 +48,12 @@ a {text-decoration:none}
     // opacity: 0.5;
     min-height: 75%;
 }
+
+.bgimg-slide {
+    background-position: center;
+    background-size: 90% 100%;
+    Background-repeat: no-repeat;
+    // opacity: 0.5;
+    min-height: 360px;
+    width: 100%;
+}
