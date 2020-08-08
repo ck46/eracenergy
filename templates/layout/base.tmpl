@@ -20,5 +20,14 @@
 	<div class="w3-container w3-padding-large" style="margin-top: 46px;"></div>
 	{{template "footer" .}}
     </body>
+    <script>
+     function w3_open() {
+	 document.getElementById("mySidebar").style.display = "block";
+     }
+
+     function w3_close() {
+	 document.getElementById("mySidebar").style.display = "none";
+     }
+    </script>
 </html>
 {{end}}

@@ -1,10 +1,34 @@
 {{define "nav"}}
+
 <nav class="w3-white w3-top">
     <div class="w3-bar w3-border w3-white">
 	<a href="/" class="w3-bar-item w3-padding">
 	    <img src="/assets/images/eracenergylogo.png" height="56px" alt="ERAC">
 	</a>
-	<span class="w3-padding">
+	<!-- Sidebar -->
+	<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+	    <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+	    <a href="/" class="w3-bar-item w3-mobile w3-button section-header">Home</a>
+	    <a href="/about" class="w3-bar-item w3-mobile w3-button section-header">About Us</a>
+	    <div class="w3-dropdown-hover section-header">
+		<button class="w3-button w3-mobile section-header">Our Solutions</button>
+		<div class="w3-dropdown-content w3-bar-block w3-card-4 section-header">
+		    <a href="/solutions#off-grid" class="section-header w3-bar-item w3-button w3-border">Off-grid Solar PV Systems</a>
+		    <a href="/solutions#lights" class="section-header w3-bar-item w3-button w3-border">Solar Street Lights</a>
+		    <a href="/solutions#pumps" class="section-header w3-bar-item w3-button w3-border">Solar Water Pumps and Geysers</a>
+		    <a href="/solutions#home" class="section-header w3-bar-item w3-button w3-border">Solar Energy Kits and Solar Home Systems</a>
+		    <a href="/solutions#consult" class="section-header w3-bar-item w3-button w3-border">Technical and Consultancy Services</a>
+		</div>
+	    </div>
+	    <a href="/blog" class="w3-bar-item w3-mobile w3-button section-header">Blog</a>
+	    <a href="/contact" class="w3-bar-item w3-mobile w3-button section-header">Contact Us</a>
+	</div>
+
+	<!-- Page Content -->
+	<div class="w3-teal">
+	    <button class="w3-button w3-teal w3-xlarge w3-right w3-white" onclick="w3_open()">☰</button>
+	</div>
+	<div class="w3-padding w3-hide-small">
 	    <a href="/" style="width:16.66%" class="w3-bar-item w3-mobile w3-button section-header">Home</a>
 	    <a href="/about" style="width:16.66%" class="w3-bar-item w3-mobile w3-button section-header">About Us</a>
 	    <div style="width:16.66%" class="w3-dropdown-hover section-header">
@@ -19,7 +43,7 @@
 	    </div>
 	    <a href="/blog" style="width:16.66%" class="w3-bar-item w3-mobile w3-button section-header">Blog</a>
 	    <a href="/contact" style="width:16.66%" class="w3-bar-item w3-mobile w3-button section-header">Contact Us</a>
-	</span>
+	</div>
     </div>
 </nav>
 {{end}}
