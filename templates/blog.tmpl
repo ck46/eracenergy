@@ -18,29 +18,47 @@
 	<p>The school now has a reliable power and piped water supply.  With the reliable power supply, the school can teach computer skills to the students and the students can have long prep times.  With the access to piped water supply, water borne related diseases are reduced and the school can venture in income generating activities such as aquaculture.
 	</p>
 	<div class="w3-padding-large w3-display-container">
-	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/solar-panels-for-inverter-and-pump.jpeg')">
+	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/moon_education/1.jpeg')">
+	    </div>
+	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/moon_education/2.jpeg')">
+	    </div>
+	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/moon_education/3.jpeg')">
+	    </div>
+	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/moon_education/4.jpeg')">
+	    </div>
+	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/moon_education/5.jpeg')">
+	    </div>
+	    {{/*<div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/solar-panels-for-inverter-and-pump.jpeg')">
 	    </div>
 	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/hybrid-system.jpeg')">
 	    </div>
 	    <div class="mySlides w3-row bgimg-slide" style="background-image: url('/assets/images/students-night-study.jpeg')">
-	    </div>
-	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	    </div>*/}}
+	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'mySlides')">&#10094;</button>
+	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1, 'mySlides')">&#10095;</button>
 	</div>
     </section>
+    <div class="w3-padding-large w3-content w3-center" style="margin-top:40px;margin-bottom:40px"><hr></div>
     <section class="w3-content">
 	<h2 class="w3-center section-header">SOLAR HYBRID RESIDENTIAL SOLUTION IN LUSAKA</h2>
 	<p>ERAC Energy Limited installed a hybrid solar system to power a residential home. The system comprises a 1.2kW solar PV system, 3kVA hybrid inverter and 5.28kWh battery bank. With the current load shedding in Zambia, the client will now have continuous power supply during load shedding and reduced monthly electricity bills.
 	</p>
 	<div class="w3-padding-large w3-display-container">
+	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/res_hybrid/1.jpeg')"></div>
+	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/res_hybrid/2.jpeg')"></div>
+	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/res_hybrid/3.jpeg')"></div>
+	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/res_hybrid/4.jpeg')"></div>
+	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/res_hybrid/5.jpeg')"></div>
+
+	    {{/*
 	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/solar-panels-for-inverter-and-pump.jpeg')">
 	    </div>
 	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/hybrid-system.jpeg')">
 	    </div>
 	    <div class="mySlides2 w3-row bgimg-slide" style="background-image: url('/assets/images/students-night-study.jpeg')">
-	    </div>
-	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+	    </div>*/}}
+	    <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1, 'mySlides2')">&#10094;</button>
+	    <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1, 'mySlides2')">&#10095;</button>
 	</div>
     </section>
     {{/*<section class="w3-content">
@@ -54,13 +72,13 @@
  var slideIndex = 1;
  showDivs(slideIndex);
 
- function plusDivs(n) {
-     showDivs(slideIndex += n);
+ function plusDivs(n, classname) {
+     showDivs(slideIndex += n, classname);
  }
 
- function showDivs(n) {
+ function showDivs(n, classname) {
      var i;
-     var x = document.getElementsByClassName("mySlides");
+     var x = document.getElementsByClassName(classname);
      if (n > x.length) {slideIndex = 1}
      if (n < 1) {slideIndex = x.length}
      for (i = 0; i < x.length; i++) {
