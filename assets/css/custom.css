@@ -34,6 +34,14 @@ a {text-decoration:none}
     //background-color:#2e74b5;
     color: #2e74b5;
 }
+.header {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
 .theme-color{ color: #2e74b5; }
 .theme-color-2{ color: #208a2e; }
 .theme-bg{ background-color: #2e74b5; }
