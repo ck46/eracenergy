@@ -35,13 +35,15 @@ a {text-decoration:none}
     color: #2e74b5;
 }
 .theme-color{ color: #2e74b5; }
+.theme-color-2{ color: #208a2e; }
 .theme-bg{ background-color: #2e74b5; }
+.theme-bg-2 { background-color: #208a2e; }
 .theme-card {
     display: flex;
     flex-direction: column;
     border: 1px solid;
     border-color: #2e74b5;
-    min-height: 360px;
+    min-height: 320px;
 }
 .card-content{
     display: flex;
