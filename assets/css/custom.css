@@ -53,6 +53,9 @@ a {text-decoration:none}
     border-color: #2e74b5;
     min-height: 320px;
 }
+.theme-card:hover {
+    border-color: #208a2e;
+}
 .card-content{
     display: flex;
     flex: 1;
@@ -69,9 +72,9 @@ a {text-decoration:none}
 }
 .theme-btn:hover {
     border: 1px solid;
-    border-color: #2e74b5;
-    color: #2e74b5;
-    text-color: #2e74b5;
+    border-color: #208a2e;
+    color: #208a2e;
+    text-color: #208a2e;
     background-color: white;
 }
 
