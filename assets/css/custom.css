@@ -37,7 +37,7 @@ a {text-decoration:none}
 .header {
     display: flex;
     flex-direction: column;
-    min-height: 300px;
+    // min-height: 300px;
     justify-content: center;
     align-items: center;
 }
