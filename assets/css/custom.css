@@ -88,7 +88,9 @@ a {text-decoration:none}
     background-size: cover;
     //background-image: url("/assets/images/solar-panels-for-inverter-and-pump.jpeg");
     //background-image: url("/assets/images/solar-panels.jpeg");
-    background-image: url("/assets/images/panels2.jpeg");
+    //background-image: url("/assets/images/panels2.jpeg");
+    //background-image:url("/assets/images/home.jpg");
+    background-image:url("/assets/images/home2.jpg");
     // opacity: 0.5;
     min-height: 75%;
 }
